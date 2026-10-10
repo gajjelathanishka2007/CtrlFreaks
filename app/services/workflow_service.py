@@ -58,3 +58,26 @@ def get_workflow(db: Session, workflow_id: int) -> Workflow | None:
         .options(selectinload(Workflow.versions))
     )
     return db.scalars(stmt).one_or_none()
+
+
+def get_workflow_version(
+    db: Session, workflow_id: int, version_number: int | None = None
+) -> WorkflowVersion | None:
+    """Return one version of a workflow.
+
+    version_number=None means "the latest version".
+    Returns None when the workflow or the version does not exist.
+    """
+    if version_number is None:
+        stmt = (
+            select(WorkflowVersion)
+            .where(WorkflowVersion.workflow_id == workflow_id)
+            .order_by(WorkflowVersion.version_number.desc())
+            .limit(1)
+        )
+    else:
+        stmt = select(WorkflowVersion).where(
+            WorkflowVersion.workflow_id == workflow_id,
+            WorkflowVersion.version_number == version_number,
+        )
+    return db.scalars(stmt).first()

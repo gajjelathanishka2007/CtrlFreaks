@@ -1,0 +1,59 @@
+{
+  "workflow": {
+    "workflow_id": 1,
+    "version_number": 1,
+    "definition": {
+      "nodes": [
+        {"id": "trigger", "type": "form_submission", "config": {"form": "contact-us"}},
+        {"id": "validate", "type": "data_contract_check", "config": {"contract": "contact"}},
+        {"id": "notify", "type": "send_email", "config": {"to": "team@example.com"}}
+      ],
+      "edges": [
+        {"from": "trigger", "to": "validate"},
+        {"from": "validate", "to": "notify"}
+      ]
+    }
+  },
+  "data_contracts": [
+    {
+      "id": 3,
+      "workflow_id": 1,
+      "name": "contact",
+      "description": "Contact form payload",
+      "rules": {
+        "fields": [
+          {"name": "email", "type": "string", "required": true},
+          {"name": "phone", "type": "string", "required": true}
+        ]
+      },
+      "status": "active"
+    }
+  ],
+  "known_failures": [
+    {
+      "id": 7,
+      "workflow_id": 1,
+      "workflow_version_id": 1,
+      "status": "failed",
+      "error_message": "Node validate failed",
+      "started_at": "2026-10-09T10:00:00",
+      "finished_at": "2026-10-09T10:00:02",
+      "created_at": "2026-10-09T10:00:00",
+      "node_executions": [
+        {
+          "id": 22,
+          "run_id": 7,
+          "node_id": "validate",
+          "node_type": "data_contract_check",
+          "status": "failed",
+          "input_data": {"email": "a@b.com"},
+          "output_data": null,
+          "error_message": "field 'phone' is required but missing",
+          "started_at": "2026-10-09T10:00:01",
+          "finished_at": "2026-10-09T10:00:02"
+        }
+      ]
+    }
+  ],
+  "test_count": 5
+}

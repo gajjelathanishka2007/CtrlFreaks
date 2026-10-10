@@ -18,7 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import models  # noqa: F401  (imports every model so tables are registered)
 from app.config import get_settings
 from app.database import Base, engine
-from app.routers import health, workflows
+from app.routers import ai, health, workflows
 
 
 @asynccontextmanager
@@ -51,6 +51,7 @@ def create_app() -> FastAPI:
 
     app.include_router(health.router)
     app.include_router(workflows.router)
+    app.include_router(ai.router)
     return app
 
 

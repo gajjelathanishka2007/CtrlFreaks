@@ -30,6 +30,12 @@ class Settings(BaseSettings):
     # unrelated lines in .env do not crash the app.
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
+    # OPTIONAL and reserved for the AI services module (Developer 4) once the
+    # team agrees on a provider. The backend itself never reads this value -
+    # it exists so the variable name is documented in one place.
+    # NEVER commit a real key; .env is gitignored (see .env.example).
+    gemini_api_key: str = ""
+
     @property
     def cors_origins(self) -> list[str]:
         """Turn the comma separated string into a clean list of origins."""
