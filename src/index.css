@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+@import '@xyflow/react/dist/style.css';
+
+/* ---------------------------------------------------------------
+   CtrlFreaks design tokens
+   A dark, "control room" theme with an electric accent palette.
+----------------------------------------------------------------*/
+@theme {
+  --color-ink-950: #070a12;
+  --color-ink-900: #0b0f1a;
+  --color-ink-850: #10162a;
+  --color-ink-800: #151d33;
+  --color-ink-700: #1e2942;
+  --color-ink-600: #2b3a5c;
+  --color-ink-400: #6b7ba8;
+  --color-ink-300: #9aa8cd;
+  --color-accent-400: #6ea8ff;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-grape-400: #b07cff;
+  --color-grape-500: #8b5cf6;
+  --color-mint-400: #34e0b0;
+  --color-mint-500: #10b981;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 600px at 15% -10%, rgba(59, 130, 246, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(139, 92, 246, 0.14), transparent 55%),
+    var(--color-ink-950);
+  color: #e6ecff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin, dark scrollbars that match the theme. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-600) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-400);
+  background-clip: content-box;
+}
+
+/* ---------------------------------------------------------------
+   React Flow theming overrides so the canvas matches CtrlFreaks.
+----------------------------------------------------------------*/
+.react-flow__background {
+  background-color: transparent;
+}
+.react-flow__edge-path {
+  stroke: var(--color-ink-600);
+  stroke-width: 2;
+}
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--color-accent-400);
+}
+.react-flow__handle {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--color-ink-900);
+  background: var(--color-accent-400);
+}
+.react-flow__handle-connecting {
+  background: var(--color-mint-400);
+}
+.react-flow__edge-text {
+  fill: var(--color-ink-300);
+  font-size: 11px;
+}
+.react-flow__edge-textbg {
+  fill: var(--color-ink-900);
+}
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__controls-button {
+  background: var(--color-ink-800);
+  border-bottom: 1px solid var(--color-ink-700);
+  fill: var(--color-ink-300);
+}
+.react-flow__controls-button:hover {
+  background: var(--color-ink-700);
+}
+.react-flow__minimap {
+  background: var(--color-ink-900) !important;
+  border: 1px solid var(--color-ink-700);
+  border-radius: 10px;
+}
+
+/* Small helpers used across the UI. */
+.cf-scroll-fade {
+  mask-image: linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent);
+}
