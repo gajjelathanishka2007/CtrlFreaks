@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environment
+.venv/
+
+# Local environment variables (may contain secrets)
+.env
+
+# SQLite database files
+*.db
+*.sqlite3
