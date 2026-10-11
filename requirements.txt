@@ -1,0 +1,22 @@
+# CtrlFreaks backend dependencies
+# Install with:  pip install -r requirements.txt
+#
+# There is no lockfile in this project (plain pip); versions are pinned to
+# what was verified on Python 3.14. Coordinate before changing these.
+
+# --- Web framework ---
+fastapi==0.143.0
+# ASGI server: uvicorn app.main:app --reload
+uvicorn[standard]==0.54.0
+
+# --- Database ---
+sqlalchemy==2.1.4
+
+# --- Settings + request/response validation ---
+pydantic==2.14.0
+pydantic-settings==2.15.0
+python-dotenv==1.2.4
+
+# --- Tests ---
+pytest==9.1.1
+httpx==0.28.1

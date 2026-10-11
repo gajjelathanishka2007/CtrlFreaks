@@ -1,0 +1,26 @@
+{
+  "test_cases": [
+    {
+      "name": "Missing required field",
+      "description": "Submits the contact form without the phone field",
+      "test_input": {"email": "a@b.com"},
+      "expected_path": ["trigger", "validate"],
+      "expected_outcome": "failed",
+      "edge_case_category": "missing_required_field",
+      "simulation_only_actions": [
+        {"node_id": "notify", "description": "would send email to team@example.com"}
+      ]
+    },
+    {
+      "name": "Boundary value - long message",
+      "description": "Submits a message with the maximum allowed length",
+      "test_input": {"email": "a@b.com", "phone": "123", "message": "aaaa"},
+      "expected_path": ["trigger", "validate", "notify"],
+      "expected_outcome": "succeeded",
+      "edge_case_category": "boundary_value",
+      "simulation_only_actions": [
+        {"node_id": "notify", "description": "would send email to team@example.com"}
+      ]
+    }
+  ]
+}

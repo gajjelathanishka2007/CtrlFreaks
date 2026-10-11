@@ -1,0 +1,15 @@
+{
+  "issue_category": "missing_required_field",
+  "affected_node_id": "validate",
+  "diagnosis": "Run 7 failed at node 'validate' because the incoming payload had no 'phone' field, but the active data contract 'contact' marks it as required.",
+  "evidence": [
+    "run 7, node 22: field 'phone' is required but missing",
+    "data contract 3 'contact' requires 'phone'"
+  ],
+  "failure_count": 1,
+  "total_relevant_executions": 1,
+  "proposed_correction": "Make 'phone' optional in contract 'contact', or add a default-value transform before the 'validate' node.",
+  "expected_benefit": "Successful runs for this input shape would go from 0/1 to 1/1.",
+  "confidence": "high",
+  "approval_status": "pending"
+}

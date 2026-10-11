@@ -1,0 +1,17 @@
+# CtrlFreaks workflow engine — backend dependencies.
+# Pinned with lower bounds so the resolver can pick compatible releases.
+
+# Web framework + ASGI server
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+
+# Persistence (execution history + workflow versions)
+SQLAlchemy>=2.0
+
+# Environment configuration
+python-dotenv>=1.0
+
+# Testing
+pytest>=8.0
+httpx>=0.27

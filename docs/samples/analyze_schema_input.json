@@ -1,0 +1,44 @@
+{
+  "workflow": {
+    "workflow_id": 1,
+    "version_number": 1,
+    "definition": {
+      "nodes": [
+        {"id": "trigger", "type": "form_submission", "config": {"form": "order-intake"}},
+        {"id": "validate", "type": "data_contract_check", "config": {"contract": "order"}},
+        {"id": "report", "type": "append_spreadsheet", "config": {"sheet": "orders"}}
+      ],
+      "edges": [
+        {"from": "trigger", "to": "validate"},
+        {"from": "validate", "to": "report"}
+      ]
+    }
+  },
+  "data_contracts": [
+    {
+      "id": 4,
+      "workflow_id": 1,
+      "name": "order",
+      "description": "Order intake payload",
+      "rules": {
+        "fields": [
+          {"name": "amount", "type": "string", "required": true}
+        ]
+      },
+      "status": "active"
+    }
+  ],
+  "previous_schema": {
+    "fields": [
+      {"name": "amount", "type": "integer", "required": true}
+    ]
+  },
+  "field_mappings": {"total": "amount"},
+  "observed_validation_errors": [
+    {
+      "run_id": 9,
+      "node_id": "validate",
+      "message": "field 'amount' expected integer, got string '19.99'"
+    }
+  ]
+}

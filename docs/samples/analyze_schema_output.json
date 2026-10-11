@@ -1,0 +1,18 @@
+{
+  "detected_change": "field 'amount' changed from integer to string",
+  "affected_fields": ["amount"],
+  "affected_node_ids": ["validate", "report"],
+  "proposed_mappings": [
+    {
+      "source_field": "amount",
+      "target_field": "amount",
+      "transformation": "cast amount to integer, rounding to 2 decimal places",
+      "explanation": "The 'validate' node still expects an integer amount."
+    }
+  ],
+  "compatibility_risks": [
+    "Rounding may change report totals.",
+    "Values such as 'N/A' cannot be cast and would still fail validation."
+  ],
+  "approval_status": "pending"
+}
