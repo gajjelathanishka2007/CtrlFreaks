@@ -1,0 +1,11 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="12" fill="#0D1014"/>
+  <rect x="0.5" y="0.5" width="47" height="47" rx="11.5" stroke="#303640"/>
+  <!-- connected-node logo: three nodes joined by workflow links -->
+  <path d="M15 33V23.5C15 21.567 16.567 20 18.5 20H29.5C31.433 20 33 18.433 33 16.5V15" stroke="#19E68C" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M15 15H24.5C26.433 15 28 16.567 28 18.5V19" stroke="#3B82F6" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="15" cy="33" r="3.6" fill="#19E68C"/>
+  <circle cx="33" cy="13" r="3.6" fill="#19E68C"/>
+  <circle cx="15" cy="13" r="3.6" fill="#3B82F6"/>
+  <circle cx="29" cy="21" r="3.2" fill="#A78BFA"/>
+</svg>
